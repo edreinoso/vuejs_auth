@@ -1,10 +1,8 @@
 <template>
-  <v-app>
-    <div id="app">
-      <Header />
-      <router-view style="margin-top:4rem" />
-    </div>
-  </v-app>
+  <div id="app">
+    <Header />
+    <router-view/>
+  </div>
 </template>
 
 <script>
@@ -22,7 +20,7 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: flex-start;
+  text-align: center;
   color: #2c3e50;
 }
 

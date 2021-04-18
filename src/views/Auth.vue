@@ -2,15 +2,14 @@
   <v-container class="fill-height">
     <v-row class>
       <v-col cols="12">
-        Hello World
-        <!-- <div class="d-flex justify-center align-center">
-          <div v-if="authMode === 'login'">
+        <div class="d-flex justify-center align-center">
+          <!-- <div v-if="authMode === 'login'">
             <LoginForm />
-          </div>
+          </div> -->
           <div v-if="authMode === 'signup'">
             <SignUpForm />
           </div>
-        </div> -->
+        </div>
       </v-col>
     </v-row>
   </v-container>
@@ -18,13 +17,13 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
-import LoginForm from "@/components/Auth/LoginForm.vue";
+// import LoginForm from "@/components/Auth/LoginForm.vue";
 import SignUpForm from "@/components/Auth/SignUpForm.vue";
 
 export default {
   name: "Auth",
   components: {
-    LoginForm,
+    // LoginForm,
     SignUpForm
   },
 //   data: () => ({

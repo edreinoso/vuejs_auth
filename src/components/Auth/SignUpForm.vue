@@ -29,10 +29,10 @@
 </template>
 
 <script>
-import { Auth } from "aws-amplify";
-import avatar from "@/store/avatar";
-import { mapActions } from "vuex";
-import UserService from "@/services/User";
+// import { Auth } from "aws-amplify";
+// import avatar from "@/store/avatar";
+// import { mapActions } from "vuex";
+// import UserService from "@/services/User";
 import SignUp from "./SignUp";
 // import Verification from "./Verification";
 
