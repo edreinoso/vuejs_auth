@@ -3,10 +3,12 @@
     <v-row class>
       <v-col cols="12">
         <div class="d-flex justify-center align-center">
+          <!-- <h1>hello world auth</h1> -->
           <!-- <div v-if="authMode === 'login'">
             <LoginForm />
           </div> -->
-          <div v-if="authMode === 'signup'">
+          <div>
+          <!-- <div v-if="authMode === 'signup'"> -->
             <SignUpForm />
           </div>
         </div>
@@ -16,7 +18,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+// import { mapState, mapActions } from "vuex";
 // import LoginForm from "@/components/Auth/LoginForm.vue";
 import SignUpForm from "@/components/Auth/SignUpForm.vue";
 

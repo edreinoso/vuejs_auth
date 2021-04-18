@@ -2,13 +2,14 @@
   <div class>
     <v-card min-width="300" max-width="800" class="card-signing elevation-2">
       <!-- data is going to have to be sent down to the children -->
-      <SignUp
+      <SignUp/>
+      <!-- <SignUp
         v-if="localSignUpState === 'register'"
         v-on:signUp="signUp($event)"
         v-on:resetState="resetState()"
         :requestLoading="requestLoading"
         :themeColor="themeColor"
-      />
+      /> -->
       <!-- <Verification
         v-if="localSignUpState === 'verification'"
         v-on:verifyCode="verifyCode($event)"
@@ -37,7 +38,7 @@ import SignUp from "./SignUp";
 // import Verification from "./Verification";
 
 export default {
-  name: "SignInForm",
+  name: "SignUpForm",
   components: {
     SignUp,
     // Verification
