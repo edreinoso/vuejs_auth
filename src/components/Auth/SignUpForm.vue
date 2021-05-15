@@ -2,14 +2,14 @@
   <div class>
     <v-card min-width="300" max-width="800" class="card-signing elevation-2">
       <!-- data is going to have to be sent down to the children -->
-      <SignUp/>
-      <!-- <SignUp
+      <!-- <SignUp/> -->
+      <SignUp
         v-if="localSignUpState === 'register'"
         v-on:signUp="signUp($event)"
         v-on:resetState="resetState()"
         :requestLoading="requestLoading"
         :themeColor="themeColor"
-      /> -->
+      />
       <!-- <Verification
         v-if="localSignUpState === 'verification'"
         v-on:verifyCode="verifyCode($event)"
@@ -32,7 +32,7 @@
 <script>
 // import { Auth } from "aws-amplify";
 // import avatar from "@/store/avatar";
-// import { mapActions } from "vuex";
+import { mapActions } from "vuex";
 // import UserService from "@/services/User";
 import SignUp from "./SignUp";
 // import Verification from "./Verification";
@@ -45,108 +45,111 @@ export default {
   },
   data: () => ({
     themeColor: "blue",
-    // snacktimeout: 8000,
-    // alert: false,
-    // text: null,
-    // color: null,
-    // requestLoading: false,
-    // localSignUpState: "register",
-    // username: "",
-    // authUser: {},
+    snacktimeout: 8000,
+    alert: false,
+    text: null,
+    color: null,
+    requestLoading: false,
+    localSignUpState: "register",
+    username: "",
+    authUser: {},
   }),
-//   methods: {
-//     ...mapActions(["resetAppState", "userSignUp", "setCurrentRoute"]),
-//     async signUp(event) {
-//       this.requestLoading = true;
-//       if (!event.valid) {
-//         (this.text = "Input some text"),
-//           (this.color = "#900028"),
-//           (this.alert = true);
-//         this.requestLoading = false;
-//         return;
-//       } else if (event.user.password != event.confirmPassword) {
-//         (this.text = "Passwords must be same"),
-//           (this.color = "#900028"),
-//           (this.alert = true);
-//         this.requestLoading = false;
-//         return;
-//       }
-//       try {
-//         this.username = event.user.username;
-//         let username, password, email;
-//         username = event.user.username;
-//         password = event.user.password;
-//         email = event.user.email;
-//         // sending this data to Cognito
-//         await Auth.signUp({
-//           username,
-//           password,
-//           attributes: {
-//             email // optional
-//           }
-//         });
-//         var randomAvatar = avatar[Math.floor(Math.random() * avatar.length)];
-//         event.user.avatar = randomAvatar;
-//         this.authUser = event.user;
-//         (this.text = "Your account has been created successfully!"),
-//           (this.color = "success"),
-//           (this.alert = true);
-//         // changing local signUp state for account verification
-//         this.localSignUpState = "verification";
-//         this.requestLoading = false;
-//       } catch (error) {
-//         (this.text = error.message),
-//           (this.color = "#900028"),
-//           (this.alert = true);
-//         this.requestLoading = false;
-//       }
-//     },
-//     async verifyCode(event) {
-//       this.requestLoading = true;
-//       try {
-//         await Auth.confirmSignUp(this.username, event.code);
-//         // Making API call in the try clause
-//         // console.log('line 108 - ', this.authUser)
-//         await UserService.post(this.authUser) // there is nothing in event.user
-//           .then(() => {
-//             this.authUser.authenticated = true;
-//             this.userSignUp(this.authUser); // sending data to the store
-//             this.requestLoading = false;
-//             this.$router.push({ name: "home" });
-//             this.setCurrentRoute("/");
-//           })
-//           .catch(err => {
-//             console.log("line 91 err from API call- ", err); // line needed by ESLint
-//             (this.text = "An error has occurred, try again later"),
-//               (this.color = "#900028"),
-//               (this.alert = true);
-//             this.requestLoading = false;
-//           });
-//       } catch (error) {
-//         (this.text = error.message),
-//           (this.color = "#900028"),
-//           (this.alert = true);
-//         this.requestLoading = false;
-//       }
-//     },
-//     async resentVerification() {
-//       // this avoid overloading the resend of events without the HTTP error
-//       try {
-//         await Auth.resendSignUp(this.username);
-//         (this.text = "Code resent successfully"),
-//           (this.color = "success"),
-//           (this.alert = true);
-//       } catch (err) {
-//         (this.text = err.message),
-//           (this.color = "#900028"),
-//           (this.alert = true);
-//         // console.log("error resending code: ", err);
-//       }
-//     },
-//     resetState() {
-//       this.resetAppState();
-//     }
-//   }
+  methods: {
+    ...mapActions(["resetAppState", "userSignUp", "setCurrentRoute"]),
+    // Sign Up
+    async signUp(event) {
+      this.requestLoading = true;
+      if (!event.valid) {
+        (this.text = "Input some text"),
+          (this.color = "#900028"),
+          (this.alert = true);
+        this.requestLoading = false;
+        return;
+      } else if (event.user.password != event.confirmPassword) {
+        (this.text = "Passwords must be same"),
+          (this.color = "#900028"),
+          (this.alert = true);
+        this.requestLoading = false;
+        return;
+      }
+      // try {
+      //   this.username = event.user.username;
+      //   let username, password, email;
+      //   username = event.user.username;
+      //   password = event.user.password;
+      //   email = event.user.email;
+      //   // sending this data to Cognito
+      //   await Auth.signUp({
+      //     username,
+      //     password,
+      //     attributes: {
+      //       email // optional
+      //     }
+      //   });
+      //   var randomAvatar = avatar[Math.floor(Math.random() * avatar.length)];
+      //   event.user.avatar = randomAvatar;
+      //   this.authUser = event.user;
+      //   (this.text = "Your account has been created successfully!"),
+      //     (this.color = "success"),
+      //     (this.alert = true);
+      //   // changing local signUp state for account verification
+      //   this.localSignUpState = "verification";
+      //   this.requestLoading = false;
+      // } catch (error) {
+      //   (this.text = error.message),
+      //     (this.color = "#900028"),
+      //     (this.alert = true);
+      //   this.requestLoading = false;
+      // }
+    },
+    // Verification
+    // async verifyCode(event) {
+    //   this.requestLoading = true;
+    //   try {
+    //     await Auth.confirmSignUp(this.username, event.code);
+    //     // Making API call in the try clause
+    //     // console.log('line 108 - ', this.authUser)
+    //     await UserService.post(this.authUser) // there is nothing in event.user
+    //       .then(() => {
+    //         this.authUser.authenticated = true;
+    //         this.userSignUp(this.authUser); // sending data to the store
+    //         this.requestLoading = false;
+    //         this.$router.push({ name: "home" });
+    //         this.setCurrentRoute("/");
+    //       })
+    //       .catch(err => {
+    //         console.log("line 91 err from API call- ", err); // line needed by ESLint
+    //         (this.text = "An error has occurred, try again later"),
+    //           (this.color = "#900028"),
+    //           (this.alert = true);
+    //         this.requestLoading = false;
+    //       });
+    //   } catch (error) {
+    //     (this.text = error.message),
+    //       (this.color = "#900028"),
+    //       (this.alert = true);
+    //     this.requestLoading = false;
+    //   }
+    // },
+    // // Verification
+    // async resentVerification() {
+    //   // this avoid overloading the resend of events without the HTTP error
+    //   try {
+    //     await Auth.resendSignUp(this.username);
+    //     (this.text = "Code resent successfully"),
+    //       (this.color = "success"),
+    //       (this.alert = true);
+    //   } catch (err) {
+    //     (this.text = err.message),
+    //       (this.color = "#900028"),
+    //       (this.alert = true);
+    //     // console.log("error resending code: ", err);
+    //   }
+    // },
+    // resetState() {
+    //   this.resetAppState();
+    // }
+  }
 };
 </script>
 

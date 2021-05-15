@@ -71,13 +71,19 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
+// import { mapActions, mapState } from "vuex";
 export default {
   name: "Header",
   methods: {
-    // authModeLocal(event) {
-    //   //   console.log("verifying event", event);
-    //   this.authMode(event);
-    // },
+    ...mapActions([
+      "authMode",
+      "userLogOut",
+    ]),
+    authModeLocal(event) {
+      console.log("verifying event", event);
+      this.authMode(event);
+    },
     // bannerMethod(color, text) {
     //   this.alert = true;
     //   this.color = color;
