@@ -38,10 +38,10 @@ export default {
   // methods: {
   //   ...mapActions(["loadUserToState"])
   // },
-  mounted() {
-    console.log('hello world');
-    console.log(this.authMode);
-  }
+  // mounted() {
+  //   console.log('hello world');
+  //   console.log(this.authMode);
+  // }
 };
 </script>
 
