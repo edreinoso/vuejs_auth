@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h1 class="pb-5 text-center blue-darken-3">Login</h1>
+    <h1 :class="['pb-5 text-center', colors.titleColor]">Login</h1>
     <v-form ref="form" v-model="valid">
       <v-text-field
-        :color="themeColor"
+        :color="colors.themeColor"
         v-model="user.username"
         :rules="rules.required"
         autocomplete="username"
@@ -13,7 +13,7 @@
       ></v-text-field>
       <v-text-field
         v-model="user.password"
-        :color="themeColor"
+        :color="colors.themeColor"
         :append-icon="eye ? 'mdi-eye' : 'mdi-eye-off'"
         :type="eye ? 'text' : 'password'"
         :rules="rules.required"
@@ -33,13 +33,13 @@
           <v-btn
             v-if="!requestLoading"
             :style="valid ? {transition: `0.3s ease`} : { cursor: `auto !important` }"
-            :color="valid ? themeColor : null"
+            :color="valid ? colors.themeColor : null"
             :class="[valid ? `white--text` : '']"
             :ripple="false"
             @click="[valid ? login() : null]"
           >Login</v-btn>
           <!-- <v-btn>Login</v-btn> -->
-          <v-progress-circular v-if="requestLoading" :size="25" :color="themeColor" indeterminate></v-progress-circular>
+          <v-progress-circular v-if="requestLoading" :size="25" :color="colors.themeColor" indeterminate></v-progress-circular>
         </v-col>
         <!-- <v-col cols="12" md="6" class="d-flex justify-center">
           <v-btn :ripple="false" @click="resetState()">Reset State</v-btn>
@@ -72,7 +72,7 @@ export default {
     color: null
   }),
   props: {
-    themeColor: String,
+    colors: Object,
     requestLoading: Boolean
   },
   methods: {

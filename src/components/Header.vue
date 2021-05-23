@@ -51,7 +51,9 @@
       </v-menu>
     </div>
     <div v-if="authUser.authenticated" class="d-flex flex-row align-center">
-      <p>{{ authMode.username }}</p>
+      <v-btn text>
+          <span class="mr-2">{{ authUser.username }}</span>
+        </v-btn>
       <v-menu offset-y transition="slide-y-transition">
         <template v-slot:activator="{ on, attrs }">
           <v-btn text v-bind="attrs" v-on="on">

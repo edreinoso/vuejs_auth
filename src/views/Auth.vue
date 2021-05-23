@@ -51,4 +51,14 @@ export default {
 .card-signing {
   padding: 30px;
 }
+
+.extraTextStyle {
+  transition: 0.3s ease;
+  color: #80CBC4 !important;
+}
+
+.extraTextStyle:hover {
+  transition: 0.3s ease;
+  color: #00695C !important;
+}
 </style>

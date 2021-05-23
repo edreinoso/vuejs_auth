@@ -7,7 +7,7 @@
         v-on:forgotPassword="forgotPassword()"
         v-on:resetState="resetState()"
         :requestLoading="requestLoading"
-        :themeColor="themeColor"
+        :colors="colors"
       />
       <ForgotPassw
         v-if="localLoginState === 'forgotPass'"
@@ -15,7 +15,7 @@
         v-on:change="change($event)"
         v-on:back="back()"
         :requestLoading="requestLoading"
-        :themeColor="themeColor"
+        :colors="colors"
       />
     </v-card>
     <v-snackbar :color="color" :timeout="snacktimeout" v-model="alert">
@@ -43,7 +43,10 @@ export default {
     ForgotPassw
   },
   data: () => ({
-    themeColor: "blue",
+    colors: {
+      titleColor: "teal-darken-3",
+      themeColor: "teal",
+    },
     eye: false,
     valid: true,
     rules: {
@@ -167,15 +170,5 @@ export default {
 
 .card-signing {
   padding: 30px;
-}
-
-.extraTextStyle {
-  transition: 0.3s ease;
-  color: #64B5F6 !important;
-}
-
-.extraTextStyle:hover {
-  transition: 0.3s ease;
-  color: #1976D2 !important;
 }
 </style>
