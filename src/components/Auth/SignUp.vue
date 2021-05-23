@@ -1,11 +1,11 @@
 <template>
   <div>
-    <h1 class="pb-5 text-center" style="color:#1E88E5">Sign Up</h1>
+    <h1 :class="['pb-5 text-center', colors.titleColor]">Sign Up</h1>
     <v-form ref="form" v-model="valid">
       <v-row>
         <v-col cols="12" md="6">
           <v-text-field
-            :color="themeColor"
+            :color="colors.themeColor"
             v-model="user.username"
             :rules="rules.required"
             autocomplete="username"
@@ -17,7 +17,7 @@
         <!-- email -->
         <v-col cols="12" md="6">
           <v-text-field
-            :color="themeColor"
+            :color="colors.themeColor"
             v-model="user.email"
             :rules="rules.email"
             autocomplete="username"
@@ -31,7 +31,7 @@
         <!-- first name -->
         <v-col cols="12" md="6">
           <v-text-field
-            :color="themeColor"
+            :color="colors.themeColor"
             v-model="user.firstName"
             :rules="rules.required"
             autocomplete="username"
@@ -43,7 +43,7 @@
         <!-- last name -->
         <v-col cols="12" md="6">
           <v-text-field
-            :color="themeColor"
+            :color="colors.themeColor"
             v-model="user.lastName"
             :rules="rules.required"
             autocomplete="username"
@@ -58,7 +58,7 @@
         <v-col cols="12" md="6">
           <v-text-field
             v-model="user.password"
-            :color="themeColor"
+            :color="colors.themeColor"
             :append-icon="eyePass ? 'mdi-eye' : 'mdi-eye-off'"
             :type="eyePass ? 'text' : 'password'"
             :rules="rules.password"
@@ -73,7 +73,7 @@
         <v-col cols="12" md="6">
           <v-text-field
             v-model="user.confirmPassword"
-            :color="themeColor"
+            :color="colors.themeColor"
             :append-icon="eyeConfirmPass ? 'mdi-eye' : 'mdi-eye-off'"
             :type="eyeConfirmPass ? 'text' : 'password'"
             :rules="[passwordConfirmationRule]"
@@ -87,16 +87,16 @@
         </v-col>
       </v-row>
       <v-col cols="12" class="d-flex justify-center">
-        <!-- <v-btn
-            v-if="!requestLoading"
-            :style="valid ? {transition: `0.3s ease`} : { cursor: `auto !important` }"
-            :color="valid ? themeColor : null"
-            :class="[valid ? `white--text` : '']"
-            @click="valid ? signUp(): null"
-            :ripple="false"
-        >Sign Up</v-btn>-->
-        <v-btn>Sign Up</v-btn>
-        <v-progress-circular v-if="requestLoading" :size="25" :color="themeColor" indeterminate></v-progress-circular>
+        <v-btn
+          v-if="!requestLoading"
+          :style="valid ? {transition: `0.3s ease`} : { cursor: `auto !important` }"
+          :color="valid ? colors.themeColor : null"
+          :class="[valid ? `white--text` : '']"
+          @click="valid ? signUp(): null"
+          :ripple="false"
+        >Sign Up</v-btn>
+        <!-- <v-btn>Sign Up</v-btn> -->
+        <v-progress-circular v-if="requestLoading" :size="25" :color="colors.themeColor" indeterminate></v-progress-circular>
       </v-col>
     </v-form>
   </div>
@@ -121,10 +121,10 @@ export default {
       ]
     },
     user: {
-      username: "",
-      email: "",
-      firstName: "",
-      lastName: "",
+      username: "ed",
+      email: "edgardo_CJ@hotmail.com",
+      firstName: "ed",
+      lastName: "reinoso",
       password: "",
       confirmPassword: ""
     }
@@ -137,7 +137,7 @@ export default {
     }
   },
   props: {
-    themeColor: String,
+    colors: Object,
     requestLoading: Boolean
   },
   methods: {

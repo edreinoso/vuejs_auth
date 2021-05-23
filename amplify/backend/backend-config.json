@@ -1,0 +1,10 @@
+{
+	"auth": {
+		"vuejsauth708b3d37": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	}
+}

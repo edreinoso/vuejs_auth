@@ -6,6 +6,7 @@ import {
     userLogOut,
 } from "./auth"
 
+import { resetAppState } from "./resetState"
 
 export default {
     // loadUserToState,
@@ -13,4 +14,5 @@ export default {
     userLookUp,
     userSignUp,
     userLogOut,
+    resetAppState
 }

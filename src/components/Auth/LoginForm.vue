@@ -9,14 +9,14 @@
         :requestLoading="requestLoading"
         :themeColor="themeColor"
       />
-      <!-- <ForgotPass
+      <ForgotPassw
         v-if="localLoginState === 'forgotPass'"
         v-on:send="send($event)"
         v-on:change="change($event)"
         v-on:back="back()"
         :requestLoading="requestLoading"
         :themeColor="themeColor"
-      /> -->
+      />
     </v-card>
     <v-snackbar :color="color" :timeout="snacktimeout" v-model="alert">
       <!-- <v-snackbar :color="bannerColor" timeout="30000" :v-model="bannerAlert"> -->
@@ -34,16 +34,16 @@
 // import { Auth } from "aws-amplify";
 import { mapActions } from "vuex";
 import Login from "./Login";
-// import ForgotPass from "./ForgotPass";
+import ForgotPassw from "./ForgotPassw";
 
 export default {
   name: "LoginForm",
   components: {
     Login,
-    // ForgotPass
+    ForgotPassw
   },
   data: () => ({
-    themeColor: "#900028",
+    themeColor: "blue",
     eye: false,
     valid: true,
     rules: {
@@ -111,40 +111,41 @@ export default {
     //       this.requestLoading = false;
     //     });
     },
-    async login() {
-    // async login(event) {
-    //   this.requestLoading = true;
-    //   if (!event.valid) {
-    //     (this.text = "Input some text"),
-    //       (this.color = "#900028"),
-    //       (this.alert = true);
-    //     this.requestLoading = false;
-    //     return;
-    //   }
-    //   let username, password;
-    //   username = event.user.username;
-    //   password = event.password;
-    //   try {
-    //     await Auth.signIn(username, password);
-    //     // should look at the pool of users in the store, and should
-    //     // get that user to display in the application
+    // async login() {
+    async login(event) {
+      this.requestLoading = true;
+      if (!event.valid) {
+        (this.text = "Input some text"),
+          (this.color = "#900028"),
+          (this.alert = true);
+        this.requestLoading = false;
+        return;
+      }
+      let username, password;
+      username = event.user.username;
+      password = event.password;
+      console.log(username, password)
+      try {
+        // await Auth.signIn(username, password);
+        // should look at the pool of users in the store, and should
+        // get that user to display in the application
 
-    //     // adding authentication property: logical issue!
-    //     // if adding it before, the header will
-    //     // load first before even going to the
-    //     // home
-    //     event.user.authenticated = true;
-    //     console.log("line 142 - login form", event.user);
-    //     this.userLookUp(event.user); // looking up user information
-    //     this.requestLoading = false;
-    //     this.$router.push({ name: "home" });
-    //     this.setCurrentRoute("/");
-    //   } catch (error) {
-    //     (this.text = error.message),
-    //       (this.color = "#900028"),
-    //       (this.alert = true);
-    //     this.requestLoading = false;
-    //   }
+        // adding authentication property: logical issue!
+        // if adding it before, the header will
+        // load first before even going to the
+        // home
+        event.user.authenticated = true;
+        console.log("line 142 - login form", event.user);
+        // this.userLookUp(event.user); // looking up user information
+        this.requestLoading = false;
+        // this.$router.push({ name: "home" });
+        // this.setCurrentRoute("/");
+      } catch (error) {
+        (this.text = error.message),
+          (this.color = "#900028"),
+          (this.alert = true);
+        this.requestLoading = false;
+      }
     },
     resetState() {
       this.resetAppState();
@@ -170,11 +171,11 @@ export default {
 
 .extraTextStyle {
   transition: 0.3s ease;
-  color: #b08c62 !important;
+  color: #64B5F6 !important;
 }
 
 .extraTextStyle:hover {
   transition: 0.3s ease;
-  color: #ad712a !important;
+  color: #1976D2 !important;
 }
 </style>

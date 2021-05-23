@@ -1,45 +1,32 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-// import store from '../store/store';
+import store from '../store/store';
 
 Vue.use(VueRouter)
 
 const routes = [
     {
-        // path: '/auth',
-        path: '/',
+        path: '/auth',
         name: 'auth',
         component: () => import(/* webpackChunkName: "about" */ '../views/Auth.vue'),
-        // beforeEnter: (to, from, next) => {
-        //   if (store.state.authUser.authenticated) {
-        //     next({
-        //       path: '/',
-        //       name: 'home',
-        //       component: () => import('../views/Home.vue')
-        //     })
-        //   }
-        //   else {
-        //     next()
-        //   }
-        // }
     },
-    // {
-    //     path: '/',
-    //     name: 'home',
-    //     component: () => import(/* webpackChunkName: "about" */ '../views/Home.vue'),
-    //     beforeEnter: (to, from, next) => {
-    //         if (!store.state.authUser.authenticated) {
-    //             next({
-    //                 path: '/auth',
-    //                 name: 'auth',
-    //                 component: () => import('../views/Auth.vue')
-    //             })
-    //         }
-    //         else {
-    //             next()
-    //         }
-    //     }
-    // },
+    {
+        path: '/',
+        name: 'home',
+        component: () => import(/* webpackChunkName: "about" */ '../views/Home.vue'),
+        beforeEnter: (to, from, next) => {
+            if (!store.state.authUser.authenticated) {
+                next({
+                    path: '/auth',
+                    name: 'auth',
+                    component: () => import('../views/Auth.vue')
+                })
+            }
+            else {
+                next()
+            }
+        }
+    },
 ]
 
 const router = new VueRouter({
